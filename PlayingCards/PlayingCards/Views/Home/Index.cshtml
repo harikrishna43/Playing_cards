@@ -1,0 +1,15 @@
+﻿@model CardPlayers
+@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+<div class="jumbotron">
+    <h1>Simple Card Game </h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    
+    <p> Players : @Html.TextBoxFor(m => m.playersCount)</p><input id="submit" type="submit" />
+</div>
+
+
+})

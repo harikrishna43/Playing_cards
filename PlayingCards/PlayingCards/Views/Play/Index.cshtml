@@ -1,0 +1,41 @@
+﻿@model PlayingCards.Users
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Play", FormMethod.Post))
+{
+    <p>
+        <h1>Wild Card: @Convert.ToString(Session["Wcard"])</h1>
+    </p>
+
+    <div class="row">
+        @foreach (var item in Model.user)
+        {
+            <div class="col-md-4">
+                <h2>@item.player</h2>
+                <ul>
+                    @foreach (var itm in (List<Card>)item.Player_card.Deal)
+                    {
+                        // var score=item.score
+                        <li>@itm.ToString()</li>
+
+
+                    }
+                    <li>score : @item.score</li>
+                    @{
+                        int _maxscore = Model.user.Max(m => m.score);
+                        if (_maxscore == item.score)
+                        {
+                            <li><h1>Winner</h1></li>
+                        }
+                    }
+                </ul>
+
+            </div>
+                        }
+    </div>
+    <input type="submit" value="New Game" />
+                        }
